@@ -39,16 +39,26 @@
   // Function: fetch API data
   function fetchApi(setNumber, setYear){
     let number = numberInput.value;
-    // Check if each button is pressed
+
+    // Check if the year button is pressed
     if(ybValue == 1){
       console.log("YEAR!!");
+      // Fetch year data from url
+      fetch('http://numbersapi.com/'+number+'/year')
+      // Response from fetch
+      .then(response => response.text())
+      // Data in the response
+      .then(data => {
+        // Set the text in the factText-paragraph to the random fact
+        factText.innerText = data;
+        return data;
+        console.log(data);
+      });
+    // The number button is pressed
     }else{
       console.log("NUMBER!!!");
-    }
-
-
-    // Fetch the json object from the url
-    fetch('http://numbersapi.com/'+number+'?json')
+      // Fetch the json object from the url
+      fetch('http://numbersapi.com/'+number+'?json')
       // Json-object response
       .then(response => response.json())
       // Data in json format
@@ -57,6 +67,7 @@
         factText.innerText = data.text;
         return data.text;
       });
+    }
 
     // Make sure input is not empty
     if(number !== ''){
