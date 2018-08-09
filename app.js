@@ -8,6 +8,8 @@
   // Button values
   let nbValue = 0;
   let ybValue = 0;
+  // Grab number fact text headline
+  let numberYearHeadline = document.querySelector('.card-title');
   // Event listener on year button
   yButton.addEventListener('click', setYear);
   // Event listener on number button
@@ -22,6 +24,12 @@
     nbValue = 0;
     console.log('year:'+ybValue);
     console.log('number:'+nbValue);
+    // Make text disapear
+    factDiv.style.display = 'none';
+    // Clear input
+    numberInput.value = '';
+    // Change the text to display Year Fact when year-button is clicked
+    numberYearHeadline.textContent = 'Year Fact';
     return ybValue;
   }
   // Function: set numberButton
@@ -30,11 +38,14 @@
     ybValue = 0;
     console.log('number'+nbValue);
     console.log('year:'+ybValue);
+    // Make text disapear
+    factDiv.style.display = 'none';
+    // Clear input
+    numberInput.value = '';
+    // Change the text to display Year Fact when number-button is clicked
+    numberYearHeadline.textContent = 'Number Fact';
     return nbValue;
   }
-
-  // Value after button click
-
 
   // Function: fetch API data
   function fetchApi(setNumber, setYear){
@@ -43,6 +54,7 @@
     // Check if the year button is pressed
     if(ybValue == 1){
       console.log("YEAR!!");
+
       // Fetch year data from url
       fetch('http://numbersapi.com/'+number+'/year')
       // Response from fetch
@@ -80,4 +92,6 @@
   }
 
   // Make it possible to choose between numbers and years
+  // Change the text to display Year Fact when year-button is clicked
+
   // Year format: http://numbersapi.com/[your_number_here]/year
