@@ -5,7 +5,7 @@
   // Grab buttons
   let nButton = document.querySelector('#numberButton');
   let yButton = document.querySelector('#yearButton');
-  // Button values
+  // Initialize button values
   let nbValue = 0;
   let ybValue = 0;
   // Grab number fact text headline
@@ -17,13 +17,11 @@
   // Event listener on input, fetching data from API
   numberInput.addEventListener('input', fetchApi);
 
-
-  // Function: set yearButton
+    // Function: set yearButton
     function setYear(){
+    // Set year value to 1 to be passed to fetchAPI function
     ybValue = 1;
     nbValue = 0;
-    console.log('year:'+ybValue);
-    console.log('number:'+nbValue);
     // Make text disapear
     factDiv.style.display = 'none';
     // Clear input
@@ -34,10 +32,9 @@
   }
   // Function: set numberButton
   function setNumber(){
+    // Set number value to 1 to be passed to fetchAPI function
     nbValue = 1;
     ybValue = 0;
-    console.log('number'+nbValue);
-    console.log('year:'+ybValue);
     // Make text disapear
     factDiv.style.display = 'none';
     // Clear input
@@ -53,8 +50,6 @@
 
     // Check if the year button is pressed
     if(ybValue == 1){
-      console.log("YEAR!!");
-
       // Fetch year data from url
       fetch('http://numbersapi.com/'+number+'/year')
       // Response from fetch
@@ -64,11 +59,9 @@
         // Set the text in the factText-paragraph to the random fact
         factText.innerText = data;
         return data;
-        console.log(data);
       });
     // The number button is pressed
     }else{
-      console.log("NUMBER!!!");
       // Fetch the json object from the url
       fetch('http://numbersapi.com/'+number+'?json')
       // Json-object response
@@ -80,7 +73,6 @@
         return data.text;
       });
     }
-
     // Make sure input is not empty
     if(number !== ''){
       // Change style of #fact to visible
